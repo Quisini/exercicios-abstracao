@@ -13,4 +13,8 @@ public class Pet {
     public String getNome() {
         return nome;
     }
+
+    public boolean isClean(){
+        return isClean;
+    }
 }

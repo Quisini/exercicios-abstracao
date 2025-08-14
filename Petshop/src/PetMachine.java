@@ -38,6 +38,10 @@ public class PetMachine {
         return this.water;
     }
 
+    public Pet getPet(){
+        return this.pet;
+    }
+
     public int getShampoo(){
         return this.shampoo;
     }
@@ -47,12 +51,36 @@ public class PetMachine {
     }
 
     public void setPet(Pet pet){
-        this.pet = pet;
+        if(this.hasPet){
+            System.out.println("Retire o pet primeiro para poder adicionar outro!");
+        }
+        else{
+            this.pet = pet;
+            System.out.println("O pet " + pet + " foi adicionado à máquina");
+        }
     }
 
     public void removePet(){
-        this.pet = null;
+        if(this.hasPet){
+            System.out.println("O pet " + this.pet + " foi removido da máquina");
+            this.pet = null;
+            this.isClean = this.pet.isClean() ? true : false;
+        }
+        else {
+            System.out.println("Não há pet para ser tirado");
+        }
     }
 
+    public void cleanPetMachine(){
+        if(this.water >=3 && this.shampoo >= 1){
+        this.water -= 3;
+        this.shampoo -= 1;
+        this.isClean = true;
+        System.out.println("A máquina foi limpa!");
+        }
+        else{
+            System.out.println("Água/shampoo insuficiente, abasteça para poder usar a máquina!");
+        }
+    }
 
 }
