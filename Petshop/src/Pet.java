@@ -1,6 +1,6 @@
 public class Pet {
     private String nome;
-    private boolean isClean;
+    private boolean isClean = false;
 
     public void setNome(String nome){
         this.nome = nome;

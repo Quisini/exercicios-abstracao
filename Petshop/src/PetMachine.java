@@ -6,15 +6,20 @@ public class PetMachine {
     private boolean isClean = true;
 
     public void cleanPet(){
-        if(this.water >=10 && this.shampoo >= 2){
-            this.pet.setClean(true);
-            this.isClean = true;
-            this.shampoo -= 2;
-            this.water -= 10;
-            System.out.println("O pet " + pet.getNome() + " está limpo e a máquina também!");
+        if(this.hasPet){
+            if(this.water >=10 && this.shampoo >= 2){
+                this.pet.setClean(true);
+                this.isClean = true;
+                this.shampoo -= 2;
+                this.water -= 10;
+                System.out.println("O pet " + pet.getNome() + " está limpo e a máquina também!");
+            }
+            else{
+                System.out.println("Água/shampoo insuficiente, abasteça para poder usar a máquina!");
+            }
         }
         else{
-            System.out.println("Água/shampoo insuficiente, abasteça para poder usar a máquina!");
+            System.out.println("Não há pet na máquina");
         }
     }
 
@@ -57,14 +62,15 @@ public class PetMachine {
         else{
             this.pet = pet;
             System.out.println("O pet " + pet + " foi adicionado à máquina");
+            this.hasPet = true;
         }
     }
 
     public void removePet(){
         if(this.hasPet){
             System.out.println("O pet " + this.pet + " foi removido da máquina");
+            this.isClean = this.pet.isClean();
             this.pet = null;
-            this.isClean = this.pet.isClean() ? true : false;
         }
         else {
             System.out.println("Não há pet para ser tirado");
@@ -72,14 +78,19 @@ public class PetMachine {
     }
 
     public void cleanPetMachine(){
-        if(this.water >=3 && this.shampoo >= 1){
-        this.water -= 3;
-        this.shampoo -= 1;
-        this.isClean = true;
-        System.out.println("A máquina foi limpa!");
+        if(!this.hasPet){
+            if(this.water >=3 && this.shampoo >= 1){
+            this.water -= 3;
+            this.shampoo -= 1;
+            this.isClean = true;
+            System.out.println("A máquina foi limpa!");
+            }
+            else{
+                System.out.println("Água/shampoo insuficiente, abasteça para poder usar a máquina!");
+            }
         }
         else{
-            System.out.println("Água/shampoo insuficiente, abasteça para poder usar a máquina!");
+            System.out.println("Espera! " + this.pet.getNome() + " está na máquina!");
         }
     }
 

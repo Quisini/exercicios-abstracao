@@ -62,7 +62,7 @@ public class App {
         }
         Pet pet = new Pet();
         System.out.print("Escreva o nome do pet: ");
-        String nomePet = scanner.nextLine();
+        String nomePet = scanner.next();
         pet.setNome(nomePet);
         petMachine.setPet(pet);
         System.out.println(nomePet + " foi colocado(a) na máquina!");
